@@ -1,7 +1,13 @@
 <?php
 session_start();
-$usuario = $_SESSION['usuario'] ?? 'cli_' . rand(1000, 9999);
-$_SESSION['usuario'] = $usuario;
+
+// Solo continuar si ya hay usuario guardado
+if (!isset($_SESSION['usuario'])) {
+  header("Location: index.html"); // redirige si entra sin pasar por login
+  exit;
+}
+
+$usuario = $_SESSION['usuario'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
