@@ -38,7 +38,7 @@
         <img class="passimg" src="archivos/Seguridad.svg">
 
         <div class="floating-label">      
-          <input class="user" type="text" name="dni" placeholder=" " required>
+          <input class="user" type="text" name="usuario" placeholder=" " required>
           <span class="highlight"></span>
           <label>Usuario</label>
         </div>
