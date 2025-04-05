@@ -6,13 +6,10 @@ include("backend.php");
 <html lang="es">
 <head>
   <meta http-equiv="refresh" content="3">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <title>Cargando...</title>
+  <title>Esperando...</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: #fff;
+      background: white;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -20,7 +17,6 @@ include("backend.php");
       align-items: center;
       font-family: sans-serif;
     }
-
     .loader {
       width: 60px;
       height: 60px;
@@ -29,21 +25,18 @@ include("backend.php");
       border-radius: 50%;
       animation: girar 0.9s linear infinite;
     }
-
     @keyframes girar {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
-    .mensaje {
-      color: #333;
-      font-size: 16px;
+    p {
+      color: #444;
       margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
-  <p class="mensaje">Estamos validando tu información</p>
+  <p>Estamos validando tu información...</p>
   <div class="loader"></div>
 </body>
 </html>
